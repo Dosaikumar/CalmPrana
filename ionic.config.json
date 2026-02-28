@@ -1,0 +1,7 @@
+{
+  "name": "CalmPrana",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
