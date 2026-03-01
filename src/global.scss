@@ -16,7 +16,7 @@
 @import "@ionic/angular/css/normalize.css";
 @import "@ionic/angular/css/structure.css";
 @import "@ionic/angular/css/typography.css";
-@import "@ionic/angular/css/display.css";
+@import '@ionic/angular/css/display.css';
 
 /* Optional CSS utils that can be commented out */
 @import "@ionic/angular/css/padding.css";
@@ -25,13 +25,45 @@
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
-/**
- * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
- */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap');
 
-/* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+:root {
+    --ion-font-family: 'Outfit', sans-serif;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: 0.3px;
+}
+
+/* Base minimal overrides */
+ion-header {
+    box-shadow: none !important;
+}
+
+ion-toolbar {
+    --border-width: 0;
+    --background: transparent;
+}
+
+ion-card {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03) !important;
+    border-radius: 16px !important;
+    margin: 16px;
+}
+
+html.ios ion-card {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03) !important;
+}
+
+@media (prefers-color-scheme: dark) {
+    ion-card {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
+    }
+}
+
+.text-gradient {
+    background: -webkit-linear-gradient(45deg, var(--ion-color-primary), var(--ion-color-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

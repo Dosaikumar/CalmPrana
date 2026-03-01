@@ -1,0 +1,16 @@
+<ion-card class="freq-card" [class.active]="isActive" (click)="onPlayClick()">
+  <ion-card-header>
+    <ion-card-subtitle>{{ frequency.category }}</ion-card-subtitle>
+    <ion-card-title>{{ frequency.name }}</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    <p>{{ frequency.description }}</p>
+
+    <div class="freq-indicator">
+      <ion-icon name="pulse-outline" color="primary"></ion-icon>
+      <span class="hz-text">{{ frequency.baseFrequency }} Hz <span *ngIf="frequency.offsetHz"> (Binaural offset: {{
+          frequency.offsetHz }} Hz)</span></span>
+    </div>
+  </ion-card-content>
+</ion-card>

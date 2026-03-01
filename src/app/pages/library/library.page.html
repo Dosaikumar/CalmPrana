@@ -1,0 +1,10 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="header-container">
+    <h1 class="text-gradient">Library</h1>
+    <p>Explore Pranayama</p>
+  </div>
+
+  <div class="list-container">
+    <app-pranayama-card *ngFor="let item of library" [data]="item"></app-pranayama-card>
+  </div>
+</ion-content>

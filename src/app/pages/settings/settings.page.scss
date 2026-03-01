@@ -1,0 +1,44 @@
+ion-content {
+    --background: var(--ion-background-color);
+}
+
+.header-container {
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 30px;
+
+    h1 {
+        font-size: 2.5rem;
+        font-weight: 600;
+        margin: 0;
+    }
+
+    p {
+        font-size: 1.1rem;
+        color: var(--ion-color-medium);
+        margin: 5px 0 20px 0;
+    }
+}
+
+.settings-list {
+    background: transparent;
+
+    ion-list-header {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--ion-color-medium);
+        margin-bottom: 10px;
+        padding-left: 5px;
+    }
+}
+
+.setting-item {
+    --background: var(--ion-color-light);
+    --border-radius: 16px;
+    margin-bottom: 12px;
+    --padding-start: 16px;
+
+    ion-label {
+        font-weight: 500;
+    }
+}

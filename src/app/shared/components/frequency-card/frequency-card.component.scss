@@ -1,0 +1,45 @@
+.freq-card {
+    --background: var(--ion-color-light);
+    margin: 10px 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+
+    ion-card-subtitle {
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: var(--ion-color-medium);
+        margin-bottom: 4px;
+    }
+
+    ion-card-title {
+        font-size: 1.3rem;
+        font-weight: 600;
+    }
+
+    p {
+        margin-top: 0;
+        margin-bottom: 12px;
+        color: var(--ion-text-color);
+    }
+
+    .freq-indicator {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding-top: 10px;
+        border-top: 1px solid rgba(128, 128, 128, 0.2);
+
+        .hz-text {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--ion-color-medium);
+        }
+    }
+
+    &.active {
+        --background: rgba(var(--ion-color-primary-rgb), 0.1);
+        border: 1px solid var(--ion-color-primary);
+    }
+}

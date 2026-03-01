@@ -1,0 +1,62 @@
+<ion-content [fullscreen]="true" class="ion-padding frequency-content">
+  <div class="header-container">
+    <h1 class="text-gradient">Frequencies</h1>
+    <p>Calm Your Mind</p>
+  </div>
+
+  <div class="disclaimer-alert">
+    <ion-icon name="information-circle-outline"></ion-icon>
+    <p>This audio is intended for relaxation and mindfulness support only. It is not a medical treatment or cure for any
+      disease.</p>
+  </div>
+
+  <div class="categories-container" [class.shift-up]="isPlaying">
+    <!-- Brainwave Section -->
+    <h2 class="section-title">Brainwave Support</h2>
+    <app-frequency-card *ngFor="let freq of brainwaveFrequencies" [frequency]="freq"
+      [isActive]="activeFrequency?.id === freq.id && isPlaying" (play)="onPlayFrequency($event)">
+    </app-frequency-card>
+
+    <!-- Relaxation Section -->
+    <h2 class="section-title">Relaxation Tones</h2>
+    <app-frequency-card *ngFor="let freq of relaxationFrequencies" [frequency]="freq"
+      [isActive]="activeFrequency?.id === freq.id && isPlaying" (play)="onPlayFrequency($event)">
+    </app-frequency-card>
+
+    <div style="height: 120px;"></div> <!-- Bottom padding for player -->
+  </div>
+
+  <!-- Persistent Player Controls -->
+  <div class="player-controls" *ngIf="activeFrequency != null">
+    <div class="player-header">
+      <div class="now-playing">
+        <span class="playing-label">Now Playing</span>
+        <span class="playing-title">{{ activeFrequency.name }}</span>
+      </div>
+      <div class="timer-display">
+        {{ formatTime(timeLeft) }}
+      </div>
+    </div>
+
+    <div class="player-actions">
+      <ion-select class="timer-select" interface="popover" [(ngModel)]="selectedDuration"
+        (ionChange)="onPlayFrequency(activeFrequency)">
+        <ion-select-option *ngFor="let min of durationOptions" [value]="min">{{ min }} min</ion-select-option>
+      </ion-select>
+
+      <ion-button (click)="togglePlayback()" shape="round" color="primary" class="main-btn" size="large">
+        {{ isPlaying ? 'Pause Audio' : 'Resume Audio' }}
+      </ion-button>
+
+      <ion-button (click)="stopPlayback()" shape="round" color="light" class="cancel-btn" size="large">
+        Cancel
+      </ion-button>
+    </div>
+
+    <div class="volume-control">
+      <ion-icon name="volume-low-outline"></ion-icon>
+      <ion-range min="0" max="100" [(ngModel)]="volume" (ionChange)="onVolumeChange($event)"></ion-range>
+      <ion-icon name="volume-high-outline"></ion-icon>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,30 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="header-container">
+    <h1 class="text-gradient">CalmPrana</h1>
+    <p>Guided Breathing</p>
+  </div>
+
+  <div class="circle-wrapper">
+    <app-breathing-circle></app-breathing-circle>
+  </div>
+
+  <div class="controls-container">
+    <ion-select class="cycle-select" fill="solid" label="Breathing Cycle" label-placement="floating"
+      [(ngModel)]="selectedCycle" (ionChange)="onCycleChange($event)" interface="action-sheet">
+      <ion-select-option *ngFor="let cycle of cycles" [value]="cycle">
+        {{ cycle.name }} ({{cycle.inhale}}-{{cycle.holdIn}}-{{cycle.exhale}}-{{cycle.holdOut}})
+      </ion-select-option>
+    </ion-select>
+
+    <div class="action-buttons">
+      <ion-button *ngIf="!isRunning" (click)="startSession()" shape="round" color="primary" class="main-btn"
+        size="large">
+        Start Practice
+      </ion-button>
+
+      <ion-button *ngIf="isRunning" (click)="stopSession()" shape="round" color="danger" class="main-btn" size="large">
+        Stop
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

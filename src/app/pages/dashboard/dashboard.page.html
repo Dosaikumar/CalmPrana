@@ -1,0 +1,61 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="header-container">
+    <h1 class="text-gradient">Progress</h1>
+    <p>Your Journey</p>
+  </div>
+
+  <ion-card class="mood-card">
+    <ion-card-header>
+      <ion-card-title>How are you feeling?</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="mood-options" *ngIf="!todayMoodSaved">
+        <ion-button fill="clear" color="primary" class="mood-btn" *ngFor="let m of moods" (click)="setMood(m)">
+          {{ m }}
+        </ion-button>
+      </div>
+      <div class="mood-saved" *ngIf="todayMoodSaved">
+        <p>Today's mood: <strong>{{ currentMood }}</strong></p>
+        <ion-button fill="clear" size="small" (click)="changeMood()">Change</ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="appearance-card">
+    <ion-card-content style="padding: 10px 16px;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h3 style="margin: 0; font-weight: 500;">Inverse Theme</h3>
+        <ion-toggle [(ngModel)]="inverseMode" (ionChange)="toggleInverseMode()"></ion-toggle>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <div class="stats-grid">
+    <ion-card class="stat-card">
+      <ion-card-header>
+        <ion-card-title>Total Time</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <h2>{{ totalMinutes }} <span>min</span></h2>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="stat-card">
+      <ion-card-header>
+        <ion-card-title>Streak</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <h2>{{ currentStreak }} <span>days</span></h2>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <ion-card class="chart-card">
+    <ion-card-header>
+      <ion-card-title>This Week</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #barCanvas></canvas>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

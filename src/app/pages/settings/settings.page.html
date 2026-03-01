@@ -1,0 +1,48 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="header-container">
+    <h1 class="text-gradient">Settings</h1>
+    <p>Preferences</p>
+  </div>
+
+  <ion-list class="settings-list">
+    <!-- Audio Settings -->
+    <ion-list-header>
+      <ion-label>Audio</ion-label>
+    </ion-list-header>
+
+    <ion-item lines="none" class="setting-item">
+      <ion-label>Background Music</ion-label>
+      <ion-toggle slot="end" [(ngModel)]="musicEnabled" (ionChange)="onAudioToggleChange()"></ion-toggle>
+    </ion-item>
+
+    <ion-item lines="none" class="setting-item">
+      <ion-label>Voice Guidance</ion-label>
+      <ion-toggle slot="end" [(ngModel)]="voiceEnabled" (ionChange)="onAudioToggleChange()"></ion-toggle>
+    </ion-item>
+
+    <div style="height: 20px;"></div>
+
+    <!-- Notification Settings -->
+    <ion-list-header>
+      <ion-label>Notifications</ion-label>
+    </ion-list-header>
+
+    <ion-item lines="none" class="setting-item">
+      <ion-label>Daily Practice Reminder</ion-label>
+      <ion-toggle slot="end" [(ngModel)]="reminderEnabled" (ionChange)="onToggleChange()"></ion-toggle>
+    </ion-item>
+
+    <ion-item lines="none" class="setting-item" *ngIf="reminderEnabled">
+      <ion-label>Reminder Time</ion-label>
+      <ion-datetime-button datetime="reminder-time"></ion-datetime-button>
+    </ion-item>
+  </ion-list>
+
+  <ion-modal [keepContentsMounted]="true">
+    <ng-template>
+      <ion-datetime id="reminder-time" presentation="time" [(ngModel)]="reminderTime"
+        (ionChange)="onTimeChange($event)">
+      </ion-datetime>
+    </ng-template>
+  </ion-modal>
+</ion-content>
