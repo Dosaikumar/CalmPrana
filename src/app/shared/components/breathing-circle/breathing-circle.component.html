@@ -1,19 +1,18 @@
 <div class="circle-container">
-  <div class="circle" 
-       [class.inhale]="phase === 'Inhale'"
-       [class.exhale]="phase === 'Exhale'"
-       [class.hold-in]="phase === 'Hold'"
-       [class.hold-out]="phase === 'HoldOut'"
-       [class.idle]="phase === 'Idle'">
-    
+  <div class="circle ion-activatable" (click)="onTap()" [class.inhale]="phase === 'Inhale'"
+    [class.exhale]="phase === 'Exhale'" [class.hold-in]="phase === 'Hold'" [class.hold-out]="phase === 'HoldOut'"
+    [class.idle]="phase === 'Idle'">
+
     <div class="timer-text" *ngIf="isRunning">
       <h2>{{ phase }}</h2>
       <h1>{{ timeLeft }}s</h1>
     </div>
-    
+
     <div class="timer-text" *ngIf="!isRunning">
       <h2>Ready</h2>
       <p>Tap Start</p>
     </div>
+
+    <ion-ripple-effect></ion-ripple-effect>
   </div>
 </div>

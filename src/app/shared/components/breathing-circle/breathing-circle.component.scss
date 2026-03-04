@@ -19,6 +19,9 @@
     transition: transform 1.5s ease-in-out, background 1.5s ease-in-out;
     color: var(--ion-color-secondary-contrast);
     position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    user-select: none;
 }
 
 .circle.inhale {

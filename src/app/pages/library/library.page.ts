@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonContent } from '@ionic/angular/standalone';
+import { IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonIcon } from '@ionic/angular/standalone';
+import { addIcons } from 'ionicons';
+import { waterOutline, leafOutline, bodyOutline, eyeOutline, walkOutline, handRightOutline } from 'ionicons/icons';
 import { PranayamaCardComponent, Pranayama } from '../../shared/components/pranayama-card/pranayama-card.component';
 
 @Component({
@@ -8,9 +10,54 @@ import { PranayamaCardComponent, Pranayama } from '../../shared/components/prana
   templateUrl: './library.page.html',
   styleUrls: ['./library.page.scss'],
   standalone: true,
-  imports: [IonContent, CommonModule, PranayamaCardComponent]
+  imports: [IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonIcon, CommonModule, PranayamaCardComponent]
 })
 export class LibraryPage {
+  constructor() {
+    addIcons({ waterOutline, leafOutline, bodyOutline, eyeOutline, walkOutline, handRightOutline });
+  }
+
+  public calmingTips = [
+    {
+      title: '5-4-3-2-1 Grounding',
+      description: 'Acknowledge 5 things you see, 4 you can touch, 3 you hear, 2 you smell, and 1 you taste.',
+      icon: 'eye-outline'
+    },
+    {
+      title: 'Progressive Relaxation',
+      description: 'Tense each muscle group for 5 seconds, then relax for 10 seconds, starting from your toes.',
+      icon: 'body-outline'
+    },
+    {
+      title: 'Drink Cold Water',
+      description: 'Drinking a cold glass of water can help reset your nervous system and bring you to the present.',
+      icon: 'water-outline'
+    },
+    {
+      title: 'Get Outdoors',
+      description: 'Step outside for 5 minutes. Fresh air and a change of scenery can instantly improve your mood.',
+      icon: 'leaf-outline'
+    }
+  ];
+
+  public asanas: Pranayama[] = [
+    {
+      name: 'Sukhasana (Easy Pose)',
+      description: 'A simple cross-legged sitting posture that promotes inner calm.',
+      benefits: ['Elongates the spine', 'Broadens the collarbones', 'Calms the mind']
+    },
+    {
+      name: 'Balasana (Child\'s Pose)',
+      description: 'A resting pose that gently stretches the lower back, hips, thighs, and ankles.',
+      benefits: ['Relieves back and neck pain', 'Relaxes the mind and body', 'Releases tension']
+    },
+    {
+      name: 'Savasana (Corpse Pose)',
+      description: 'A restorative pose played at the end of practice lying flat on the back.',
+      benefits: ['Relaxes the whole body', 'Rejuvenates mind and body', 'Reduces headache and fatigue']
+    }
+  ];
+
   public library: Pranayama[] = [
     {
       name: 'Anulom Vilom',

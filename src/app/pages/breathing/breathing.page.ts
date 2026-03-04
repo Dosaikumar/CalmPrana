@@ -41,6 +41,14 @@ export class BreathingPage implements OnInit, OnDestroy {
     this.breathingService.stopSession();
   }
 
+  onCircleTapped() {
+    if (this.isRunning) {
+      this.stopSession();
+    } else {
+      this.startSession();
+    }
+  }
+
   onCycleChange(event: any) {
     if (this.isRunning) {
       this.breathingService.stopSession();

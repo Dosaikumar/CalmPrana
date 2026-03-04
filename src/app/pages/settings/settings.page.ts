@@ -17,7 +17,6 @@ export class SettingsPage implements OnInit {
   public reminderEnabled: boolean = false;
   public reminderTime: string = '2023-01-01T08:00:00';
 
-  public musicEnabled: boolean = true;
   public voiceEnabled: boolean = true;
 
   constructor(
@@ -37,17 +36,14 @@ export class SettingsPage implements OnInit {
     const time = await this.storage.get('reminderTime');
     if (time) this.reminderTime = time;
 
-    const music = await this.storage.get('musicEnabled');
-    if (music !== null && music !== undefined) this.musicEnabled = music;
 
     const voice = await this.storage.get('voiceEnabled');
     if (voice !== null && voice !== undefined) this.voiceEnabled = voice;
   }
 
   async onAudioToggleChange() {
-    await this.storage.set('musicEnabled', this.musicEnabled);
     await this.storage.set('voiceEnabled', this.voiceEnabled);
-    this.breathingService.updateSettings(this.musicEnabled, this.voiceEnabled);
+    this.breathingService.updateSettings(false, this.voiceEnabled);
   }
 
   async onToggleChange() {

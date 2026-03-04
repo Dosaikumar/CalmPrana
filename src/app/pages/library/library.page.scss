@@ -20,8 +20,74 @@ ion-content {
     }
 }
 
+.section-title {
+    margin: 20px 0 10px 10px;
+
+    h2 {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: var(--ion-color-dark);
+        margin: 0;
+    }
+}
+
 .list-container {
     display: flex;
     flex-direction: column;
-    padding-bottom: 40px;
+    padding-bottom: 20px;
+}
+
+.tips-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    padding: 10px 0 20px 10px;
+    /* Hide scrollbar for cleaner look */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    .tip-card {
+        min-width: 240px;
+        max-width: 240px;
+        margin: 0;
+        border-radius: 16px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        background: var(--ion-card-background, #fff);
+
+        ion-card-header {
+            padding: 15px 15px 5px 15px;
+
+            .tip-icon-container {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background: var(--ion-color-primary-tint);
+                margin-bottom: 10px;
+
+                ion-icon {
+                    font-size: 24px;
+                    color: var(--ion-color-primary);
+                }
+            }
+
+            ion-card-title {
+                font-size: 1.1rem;
+                font-weight: 600;
+            }
+        }
+
+        ion-card-content {
+            padding: 0 15px 15px 15px;
+            font-size: 0.95rem;
+            color: var(--ion-color-medium);
+            line-height: 1.4;
+        }
+    }
 }

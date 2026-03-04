@@ -4,6 +4,36 @@
     <p>Explore Pranayama</p>
   </div>
 
+  <div class="section-title">
+    <h2>Quick Calming Tips</h2>
+  </div>
+
+  <div class="tips-container">
+    <ion-card class="tip-card" *ngFor="let tip of calmingTips">
+      <ion-card-header>
+        <div class="tip-icon-container">
+          <ion-icon [name]="tip.icon" color="primary"></ion-icon>
+        </div>
+        <ion-card-title>{{ tip.title }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        {{ tip.description }}
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div class="section-title">
+    <h2>Asanas (Yoga Poses)</h2>
+  </div>
+
+  <div class="list-container">
+    <app-pranayama-card *ngFor="let item of asanas" [data]="item"></app-pranayama-card>
+  </div>
+
+  <div class="section-title">
+    <h2>Pranayama (Breathing)</h2>
+  </div>
+
   <div class="list-container">
     <app-pranayama-card *ngFor="let item of library" [data]="item"></app-pranayama-card>
   </div>

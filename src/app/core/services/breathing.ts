@@ -35,7 +35,6 @@ export class BreathingService {
   private bgOscillators: any[] = []; // Stores active background drone oscillators
 
   private bgVolume = 0.2;
-  private musicEnabled = true;
   private voiceEnabled = true;
 
   private activeCycle?: BreathingCycle;
@@ -45,22 +44,12 @@ export class BreathingService {
   }
 
   async loadAudioSettings() {
-    const music = await this.storage.get('musicEnabled');
-    if (music !== null && music !== undefined) this.musicEnabled = music;
-
     const voice = await this.storage.get('voiceEnabled');
     if (voice !== null && voice !== undefined) this.voiceEnabled = voice;
   }
 
   updateSettings(music: boolean, voice: boolean) {
-    this.musicEnabled = music;
     this.voiceEnabled = voice;
-
-    if (!this.musicEnabled) {
-      this.stopBackgroundMusic();
-    } else if (this.isRunning$.value) {
-      this.startBackgroundMusic();
-    }
   }
 
   startSession(cycle: BreathingCycle) {
@@ -93,57 +82,11 @@ export class BreathingService {
   }
 
   private startBackgroundMusic() {
-    if (!this.musicEnabled || !this.audioCtx) return;
-    if (this.bgOscillators.length > 0) return; // Already playing
-
-    this.bgGain = this.audioCtx.createGain();
-    this.bgGain.gain.setValueAtTime(0, this.audioCtx.currentTime);
-    this.bgGain.gain.linearRampToValueAtTime(this.bgVolume, this.audioCtx.currentTime + 2); // 2s fade in
-    this.bgGain.connect(this.audioCtx.destination);
-
-    // Create a calming ambient chord (C minor 9ish)
-    const frequencies = [130.81, 196.00, 233.08, 293.66]; // C3, G3, A#3, D4
-    frequencies.forEach((freq, i) => {
-      const osc = this.audioCtx!.createOscillator();
-      osc.type = 'sine';
-      osc.frequency.value = freq;
-
-      const lfo = this.audioCtx!.createOscillator();
-      lfo.type = 'sine';
-      lfo.frequency.value = 0.05 + Math.random() * 0.1; // Very slow LFO for movement
-
-      const lfoGain = this.audioCtx!.createGain();
-      lfoGain.gain.value = 2.0; // Subtle pitch variance (chorus-like)
-
-      lfo.connect(lfoGain);
-      lfoGain.connect(osc.detune);
-
-      // Pan to create wide spatial stereo feel
-      const panner = this.audioCtx!.createStereoPanner();
-      panner.pan.value = (i % 2 === 0 ? -1 : 1) * 0.5;
-
-      osc.connect(panner);
-      panner.connect(this.bgGain!);
-
-      osc.start();
-      lfo.start();
-      this.bgOscillators.push(osc, lfo);
-    });
+    // Background music has been removed per user request
   }
 
   private stopBackgroundMusic() {
-    if (this.bgGain && this.audioCtx) {
-      // Fade out to prevent popping
-      this.bgGain.gain.linearRampToValueAtTime(0, this.audioCtx.currentTime + 1);
-      setTimeout(() => {
-        this.bgOscillators.forEach(node => node.stop());
-        this.bgOscillators = [];
-        this.bgGain?.disconnect();
-      }, 1000);
-    } else {
-      this.bgOscillators.forEach(node => node.stop());
-      this.bgOscillators = [];
-    }
+    // Background music has been removed per user request
   }
 
   playVoice(phase: BreathingPhase) {
