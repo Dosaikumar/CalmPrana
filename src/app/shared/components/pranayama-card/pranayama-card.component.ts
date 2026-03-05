@@ -6,6 +6,7 @@ export interface Pranayama {
   name: string;
   description: string;
   benefits: string[];
+  audioUrl?: string;
 }
 
 @Component({

@@ -53,3 +53,15 @@
         transform: translateY(0);
     }
 }
+
+.audio-container {
+    margin-top: 16px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.audio-container audio {
+    width: 100%;
+    max-width: 400px;
+}

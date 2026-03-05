@@ -9,5 +9,12 @@
     <ul>
       <li *ngFor="let benefit of data.benefits">{{ benefit }}</li>
     </ul>
+
+    <div class="audio-container" *ngIf="data.audioUrl">
+      <audio controls controlsList="nodownload">
+        <source [src]="data.audioUrl" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
   </ion-card-content>
 </ion-card>

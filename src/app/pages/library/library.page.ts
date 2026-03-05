@@ -75,9 +75,10 @@ export class LibraryPage {
       benefits: ['Improves digestion', 'Increases metabolic rate', 'Clears respiratory passages']
     },
     {
-      name: 'Box Breathing',
-      description: 'A technique used to calm yourself down with a simple 4-count rotation.',
-      benefits: ['Regulates autonomic nervous system', 'Lowers stress', 'Improves mood']
+      name: 'Hanuman Chalisa',
+      description: 'A devotional hymn addressed to Lord Hanuman, believed to bring strength, courage, and protection.',
+      benefits: ['Removes negativity and fear', 'Brings peace of mind', 'Boosts inner strength'],
+      audioUrl: 'assets/audio/Shree Hanuman Chalisa - 320Kbps-(Mr-Jat.in).mp3'
     }
   ];
 }
